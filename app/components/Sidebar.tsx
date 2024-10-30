@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`bg-teal-200 transition-all duration-300 ${
+      className={`bg-teal-400 transition-all duration-300 ${
         isExpanded ? "w-64" : "w-16"
       } h-screen p-4 flex flex-col`}
       onMouseEnter={() => setIsExpanded(true)}
@@ -33,7 +33,7 @@ const Sidebar = () => {
 
       {/* Activity Feed */}
       {isExpanded && (
-        <div className="mt-8 bg-teal-100 p-4 rounded-lg">
+        <div className="mt-8 bg-teal-200 p-4 rounded-lg">
           <h2 className="font-bold text-gray-700 mb-2">Latest Activities</h2>
           <ul className="text-sm space-y-1 text-gray-700">
             {/* Sample activities, replace with dynamic data if available */}

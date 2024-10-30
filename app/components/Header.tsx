@@ -1,21 +1,28 @@
-// components/Header.tsx
-
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
+import { FiFilm, FiLogOut } from "react-icons/fi"; // Logout icon
 
 const Header = () => {
   const { data: session } = useSession();
 
   return (
-    <header className="flex items-center justify-between bg-teal-300 p-4">
-      <div className="flex items-center">
-        <img src="/logo.png" alt="Cinema Guru" className="w-8 h-8 mr-2" />
-        <h1 className="text-lg font-bold">Cinema Guru</h1>
+    <header className="flex items-center justify-between bg-teal-200 p-4">
+      <div className="flex items-center space-x-2">
+        {/* Cinema Guru Logo */}
+        <FiFilm className="text-2xl text-blue-900" />
+        <span className="text-2xl font-bold text-blue-900">Cinema Guru</span>
       </div>
       <div className="flex items-center space-x-4">
-        {session && <span>Welcome, {session.user?.email}</span>}
-        <button onClick={() => signOut()} className="text-black underline">
+        {/* Welcome Message */}
+        {session && <span className="text-black">Welcome, {session.user?.email}</span>}
+        
+        {/* Logout Button */}
+        <button
+          onClick={() => signOut()}
+          className="flex items-center text-black hover:text-blue-800"
+        >
+          <FiLogOut className="w-5 h-5 mr-1" />
           Logout
         </button>
       </div>
