@@ -38,7 +38,7 @@ const Sidebar = () => {
           <ul className="text-sm space-y-1 text-gray-700">
             {/* Sample activities, replace with dynamic data if available */}
             <li>10/2/2024, 5:11 PM - Added <span className="font-semibold">Before the Dawn</span> to watch later</li>
-            <li>10/1/2024, 4:00 PM - Favorited <span className="font-semibold">Beneath the Surface</span></li>
+            <li>10/1/2024, 4:00 PM - FAvorited <span className="font-semibold">Beneath the Surface</span></li>
             <li>10/1/2024, 4:00 PM - Favorited <span className="font-semibold">Beyond the Mist</span></li>
             <li>10/1/2024, 4:00 PM - Favorited <span className="font-semibold">Beyond the Veil</span></li>
             <li>10/1/2024, 4:00 PM - Favorited <span className="font-semibold">Before the Dawn</span></li>
