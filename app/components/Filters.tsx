@@ -49,34 +49,38 @@ const Filters: React.FC<FiltersProps> = ({
   };
 
   return (
-    <div className="mb-4 flex justify-between items-start gap-4">
-      {/* Left Section: Search and Year Inputs */}
-      <div className="flex flex-col md:flex-row items-start md:items-center gap-4 w-full md:w-1/2">
+    <div className="mb-4">
+      {/* Search Bar */}
+      <div className="w-full mb-4">
         <input
           type="text"
           placeholder="Search Movies..."
           value={searchQuery}
           onChange={handleSearchChange}
-          className="p-2 border rounded w-full md:w-auto"
+          className="p-2 border bg-blue-800 rounded-lg w-full"
         />
+      </div>
+
+      {/* Year Inputs */}
+      <div className="flex gap-4 mb-4">
         <input
           type="number"
           placeholder="Min Year"
           value={minYear}
           onChange={(e) => handleYearChange(e, "min")}
-          className="p-2 border rounded w-full md:w-auto"
+          className="p-2 border bg-blue-800 rounded-lg w-1/2"
         />
         <input
           type="number"
           placeholder="Max Year"
           value={maxYear}
           onChange={(e) => handleYearChange(e, "max")}
-          className="p-2 border rounded w-full md:w-auto"
+          className="p-2 border bg-blue-800 rounded-lg w-1/2"
         />
       </div>
 
-      {/* Right Section: Genres */}
-      <div className="flex flex-wrap items-center justify-end w-full md:w-1/2 gap-2">
+      {/* Genres */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
         {[
           "Romance",
           "Horror",
@@ -92,10 +96,10 @@ const Filters: React.FC<FiltersProps> = ({
           <button
             key={genre}
             onClick={() => handleGenreChange(genre)}
-            className={`p-2 m-1 rounded ${
+            className={`p-2 rounded-lg ${
               selectedGenres.includes(genre)
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200"
+                ? "bg-teal-400 text-white"
+                : "bg-transparent"
             }`}
           >
             {genre}
