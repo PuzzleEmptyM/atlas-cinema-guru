@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { FaHome, FaStar, FaClock } from "react-icons/fa"; // Icons
 
-const Sidebar = () => {
+type SidebarProps = {
+  setCurrentView: (view: "home" | "favorites" | "watch-later") => void;
+};
+
+const Sidebar: React.FC<SidebarProps> = ({ setCurrentView }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -17,18 +20,27 @@ const Sidebar = () => {
     >
       {/* Navigation Links */}
       <div className="flex flex-col space-y-4">
-        <Link href="/" className="flex items-center space-x-2">
+        <button
+          onClick={() => setCurrentView("home")}
+          className="flex items-center space-x-2"
+        >
           <FaHome className="text-xl" />
           {isExpanded && <span className="font-medium">Home</span>}
-        </Link>
-        <Link href="/favorites" className="flex items-center space-x-2">
+        </button>
+        <button
+          onClick={() => setCurrentView("favorites")}
+          className="flex items-center space-x-2"
+        >
           <FaStar className="text-xl" />
           {isExpanded && <span className="font-medium">Favorites</span>}
-        </Link>
-        <Link href="/watch-later" className="flex items-center space-x-2">
+        </button>
+        <button
+          onClick={() => setCurrentView("watch-later")}
+          className="flex items-center space-x-2"
+        >
           <FaClock className="text-xl" />
           {isExpanded && <span className="font-medium">Watch Later</span>}
-        </Link>
+        </button>
       </div>
 
       {/* Activity Feed */}
