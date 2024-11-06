@@ -27,7 +27,7 @@ const Movies: React.FC<MoviesProps> = ({ movies, onFavoriteToggle, onWatchLaterT
                 return (
                     <div 
                         key={movie.id} 
-                        className="relative group overflow-hidden rounded-lg shadow-lg border border-teal-400 max-w-sm w-full"
+                        className="relative group overflow-hidden rounded-lg shadow-lg border border-teal-400 max-w-md w-full"
                         style={{ aspectRatio: '1 / 1' }} // Ensures the card remains square.
                     >
                         {/* Favorite and Watch Later Buttons (Visible on Hover) */}
