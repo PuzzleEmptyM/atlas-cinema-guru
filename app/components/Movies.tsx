@@ -55,12 +55,12 @@ const Movies: React.FC<MoviesProps> = ({ movies, onFavoriteToggle, onWatchLaterT
 
                         {/* Movie Info Banner (visible on hover, positioned at the bottom) */}
                         <div
-                            className="absolute bottom-0 left-0 w-full bg-black bg-opacity-70 text-white p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                            className="absolute bottom-0 left-0 w-full bg-blue-800 text-white p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"
                         >
                             <h3 className="text-lg font-bold">{movie.title} ({movie.released})</h3>
                             <p className="text-sm mt-1">{movie.synopsis}</p>
                             <div className="mt-2">
-                                <span className="inline-block px-3 py-1 text-sm font-semibold text-teal-400 border border-teal-400 rounded">{movie.genre}</span>
+                                <span className="inline-block px-3 py-1 text-sm font-semibold bg-teal-400 text-white border border-teal-400 rounded">{movie.genre}</span>
                             </div>
                         </div>
                     </div>
