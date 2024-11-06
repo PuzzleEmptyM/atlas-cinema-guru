@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { FaStar, FaClock } from "react-icons/fa";
 
 type Movie = {
     id: string;
@@ -15,20 +16,37 @@ type Movie = {
 
 type MoviesProps = {
     movies: Movie[];
+    onFavoriteToggle: (id: string) => void;
+    onWatchLaterToggle: (id: string) => void;
 };
 
-const Movies: React.FC<MoviesProps> = ({ movies }) => {
+const Movies: React.FC<MoviesProps> = ({ movies, onFavoriteToggle, onWatchLaterToggle }) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {movies.map((movie) => {
-                console.log(movie); // Debugging
                 return (
-                    <div key={movie.id} className="relative group overflow-hidden rounded-lg shadow-lg">
+                    <div key={movie.id} className="relative group overflow-hidden rounded-lg shadow-lg w-full h-[20rem]">
+                        {/* Favorite and Watch Later Buttons */}
+                        <div className="absolute top-2 right-2 flex space-x-2 z-10">
+                            <FaStar
+                                className={`text-2xl cursor-pointer ${
+                                    movie.favorited ? "text-yellow-400" : "text-gray-400"
+                                }`}
+                                onClick={() => onFavoriteToggle(movie.id)}
+                            />
+                            <FaClock
+                                className={`text-2xl cursor-pointer ${
+                                    movie.watchLater ? "text-blue-400" : "text-gray-400"
+                                }`}
+                                onClick={() => onWatchLaterToggle(movie.id)}
+                            />
+                        </div>
+
                         {/* Movie Image */}
                         <img
                             src={movie.image}
                             alt={movie.title}
-                            className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         />
 
                         {/* Movie Info Overlay (visible on hover) */}
