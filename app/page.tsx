@@ -6,6 +6,7 @@ import Movies from "./components/Movies";
 import Filters from "./components/Filters";
 import React, { useState, useEffect } from "react";
 
+
 export default function Page() {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,9 +20,7 @@ export default function Page() {
       try {
         console.log("Fetching movies...");
         const genreQuery = selectedGenres.join(',');
-        const response = await fetch(
-          `/api/titles?page=${currentPage}&minYear=${minYear}&maxYear=${maxYear}&query=${searchQuery}&genres=${genreQuery}`
-        );
+        const response = await fetch(`/api/titles`);
         const data = await response.json();
         console.log("Fetched Data:", data);
         setMovies(data.title); // Assuming the fetched data is in data.title
