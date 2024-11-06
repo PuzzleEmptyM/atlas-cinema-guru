@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { FaHome, FaStar, FaClock } from "react-icons/fa"; // Icons
+import { useMovies } from "@/app/context/MoviesContext";
 
 type SidebarProps = {
   setCurrentView: (view: "home" | "favorites" | "watch-later") => void;
@@ -9,6 +11,7 @@ type SidebarProps = {
 
 const Sidebar: React.FC<SidebarProps> = ({ setCurrentView }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { activities } = useMovies();
 
   return (
     <aside
@@ -48,7 +51,22 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurrentView }) => {
         <div className="mt-8 bg-teal-200 p-4 rounded-lg">
           <h2 className="font-bold text-gray-700 mb-2">Latest Activities</h2>
           <ul className="text-sm space-y-1 text-gray-700">
-            {/* Add dynamic data if available */}
+            {activities.slice(0, 5).map((activity) => (
+              <li key={activity.id} className="flex flex-col">
+                <span>
+                  <strong>{activity.movieTitle}</strong>
+                </span>
+                <span>
+                  {activity.type === "favorited" && "Favorited"}
+                  {activity.type === "unfavorited" && "Unfavorited"}
+                  {activity.type === "watch-later-added" && "Added to Watch Later"}
+                  {activity.type === "watch-later-removed" && "Removed from Watch Later"}
+                </span>
+                <span className="text-xs text-gray-500">
+                  {new Date(activity.timestamp).toLocaleString()}
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
       )}
