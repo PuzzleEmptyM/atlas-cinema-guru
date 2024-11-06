@@ -17,11 +17,13 @@ export default function Page() {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
+        console.log("Fetching movies...");
         const genreQuery = selectedGenres.join(',');
         const response = await fetch(
           `/api/titles?page=${currentPage}&minYear=${minYear}&maxYear=${maxYear}&query=${searchQuery}&genres=${genreQuery}`
         );
         const data = await response.json();
+        console.log("Fetched Data:", data);
         setMovies(data.title); // Assuming the fetched data is in data.title
       } catch (error) {
         console.error("Failed to fetch movies", error);
