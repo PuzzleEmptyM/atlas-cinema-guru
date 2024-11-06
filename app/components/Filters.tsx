@@ -60,7 +60,7 @@ const Filters: React.FC<FiltersProps> = ({
             placeholder="Search Movies..."
             value={searchQuery}
             onChange={handleSearchChange}
-            className="p-2 border bg-blue-800 rounded-lg w-full"
+            className="p-2 border border-teal-400 bg-blue-800 rounded-lg w-full"
           />
           {/* Year Inputs */}
           <div className="flex gap-4">
@@ -69,14 +69,14 @@ const Filters: React.FC<FiltersProps> = ({
               placeholder="Min Year"
               value={minYear}
               onChange={(e) => handleYearChange(e, "min")}
-              className="p-2 border bg-blue-800 rounded-lg w-full"
+              className="p-2 border border-teal-400 bg-blue-800 rounded-lg w-full"
             />
             <input
               type="number"
               placeholder="Max Year"
               value={maxYear}
               onChange={(e) => handleYearChange(e, "max")}
-              className="p-2 border bg-blue-800 rounded-lg w-full"
+              className="p-2 border border-teal-400 bg-blue-800 rounded-lg w-full"
             />
           </div>
         </div>
