@@ -46,35 +46,44 @@ const Filters: React.FC<FiltersProps> = ({
     };
 
     return (
-        <div className="mb-4">
+        <div className="mb-6 px-4 py-4 bg-teal-50 rounded-lg">
+            {/* Search Input */}
             <input
                 type="text"
                 placeholder="Search Movies..."
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className="p-2 border rounded"
+                className="p-2 border border-gray-300 rounded w-full mb-4 focus:outline-none focus:ring focus:ring-blue-400"
             />
-            <input
-                type="number"
-                placeholder="Min Year"
-                value={minYear}
-                onChange={(e) => handleYearChange(e, 'min')}
-                className="p-2 ml-2 border rounded"
-            />
-            <input
-                type="number"
-                placeholder="Max Year"
-                value={maxYear}
-                onChange={(e) => handleYearChange(e, 'max')}
-                className="p-2 ml-2 border rounded"
-            />
-            <div className="flex flex-wrap mt-4">
+
+            {/* Year Inputs */}
+            <div className="flex space-x-4 mb-4">
+                <input
+                    type="number"
+                    placeholder="Min Year"
+                    value={minYear}
+                    onChange={(e) => handleYearChange(e, 'min')}
+                    className="p-2 border border-gray-300 rounded w-1/2 focus:outline-none focus:ring focus:ring-blue-400"
+                />
+                <input
+                    type="number"
+                    placeholder="Max Year"
+                    value={maxYear}
+                    onChange={(e) => handleYearChange(e, 'max')}
+                    className="p-2 border border-gray-300 rounded w-1/2 focus:outline-none focus:ring focus:ring-blue-400"
+                />
+            </div>
+
+            {/* Genre Filters */}
+            <div className="flex flex-wrap gap-2">
                 {['Romance', 'Horror', 'Drama', 'Action', 'Mystery', 'Fantasy', 'Thriller', 'Western', 'Sci-Fi', 'Adventure'].map((genre) => (
                     <button
                         key={genre}
                         onClick={() => handleGenreChange(genre)}
-                        className={`p-2 m-1 rounded ${
-                            selectedGenres.includes(genre) ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                        className={`px-3 py-1 rounded-full transition-colors ${
+                            selectedGenres.includes(genre)
+                                ? 'bg-teal-500 text-white'
+                                : 'bg-gray-200 hover:bg-gray-300'
                         }`}
                     >
                         {genre}
