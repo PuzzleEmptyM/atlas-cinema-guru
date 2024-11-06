@@ -25,9 +25,12 @@ const Movies: React.FC<MoviesProps> = ({ movies, onFavoriteToggle, onWatchLaterT
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {movies.map((movie) => {
                 return (
-                    <div key={movie.id} className="relative group overflow-hidden rounded-lg shadow-lg w-full h-[20rem]">
-                        {/* Favorite and Watch Later Buttons */}
-                        <div className="absolute top-2 right-2 flex space-x-2 z-10">
+                    <div 
+                        key={movie.id} 
+                        className="relative group overflow-hidden rounded-lg shadow-lg w-full h-[20rem] border border-teal-400"
+                    >
+                        {/* Favorite and Watch Later Buttons (Visible on Hover) */}
+                        <div className="absolute top-2 right-2 flex space-x-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <FaStar
                                 className={`text-2xl cursor-pointer ${
                                     movie.favorited ? "text-yellow-400" : "text-gray-400"
