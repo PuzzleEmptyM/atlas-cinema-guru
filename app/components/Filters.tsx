@@ -78,7 +78,7 @@ const Filters: React.FC<FiltersProps> = ({
       </div>
 
       {/* Genres */}
-      <div className="flex flex-wrap justify-end items-center w-full md:w-1/2 gap-2 mt-4 md:mt-0">
+      <div className="flex flex-wrap justify-end items-center w-full md:w-1/2 grid grid-cols-2 md:grid-cols-4 gap-2 mt-4 md:mt-0">
         {[
           "Romance",
           "Horror",
