@@ -46,44 +46,46 @@ const Filters: React.FC<FiltersProps> = ({
     };
 
     return (
-        <div className="mb-6 px-4 py-4 bg-teal-50 rounded-lg">
+        <div className="bg-teal-100 p-4 rounded-lg shadow-md mb-6">
             {/* Search Input */}
-            <input
-                type="text"
-                placeholder="Search Movies..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-                className="p-2 border border-gray-300 rounded w-full mb-4 focus:outline-none focus:ring focus:ring-blue-400"
-            />
-
-            {/* Year Inputs */}
-            <div className="flex space-x-4 mb-4">
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
                 <input
-                    type="number"
-                    placeholder="Min Year"
-                    value={minYear}
-                    onChange={(e) => handleYearChange(e, 'min')}
-                    className="p-2 border border-gray-300 rounded w-1/2 focus:outline-none focus:ring focus:ring-blue-400"
+                    type="text"
+                    placeholder="Search Movies..."
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    className="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-600 text-black"
                 />
-                <input
-                    type="number"
-                    placeholder="Max Year"
-                    value={maxYear}
-                    onChange={(e) => handleYearChange(e, 'max')}
-                    className="p-2 border border-gray-300 rounded w-1/2 focus:outline-none focus:ring focus:ring-blue-400"
-                />
+                
+                {/* Year Inputs */}
+                <div className="flex gap-4">
+                    <input
+                        type="number"
+                        placeholder="Min Year"
+                        value={minYear}
+                        onChange={(e) => handleYearChange(e, 'min')}
+                        className="w-24 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-600 text-black"
+                    />
+                    <input
+                        type="number"
+                        placeholder="Max Year"
+                        value={maxYear}
+                        onChange={(e) => handleYearChange(e, 'max')}
+                        className="w-24 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-600 text-black"
+                    />
+                </div>
             </div>
 
-            {/* Genre Filters */}
-            <div className="flex flex-wrap gap-2">
+            {/* Genre Buttons */}
+            <div className="flex flex-wrap mt-6 gap-3">
                 {['Romance', 'Horror', 'Drama', 'Action', 'Mystery', 'Fantasy', 'Thriller', 'Western', 'Sci-Fi', 'Adventure'].map((genre) => (
                     <button
                         key={genre}
                         onClick={() => handleGenreChange(genre)}
-                        className={`px-3 py-1 rounded-full transition-colors ${
+                        className={`px-4 py-2 rounded-full font-semibold transition-all duration-200 ${
                             selectedGenres.includes(genre)
-                                ? 'bg-teal-500 text-white'
-                                : 'bg-gray-200 hover:bg-gray-300'
+                                ? 'bg-teal-600 text-white'
+                                : 'bg-gray-200 text-black hover:bg-teal-400 hover:text-white'
                         }`}
                     >
                         {genre}
