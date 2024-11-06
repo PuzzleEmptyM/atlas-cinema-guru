@@ -96,10 +96,10 @@ const Filters: React.FC<FiltersProps> = ({
           <button
             key={genre}
             onClick={() => handleGenreChange(genre)}
-            className={`p-2 rounded-lg ${
+            className={`p-2 border border-teal-400 rounded-lg ${
               selectedGenres.includes(genre)
                 ? "bg-teal-400 text-white"
-                : "bg-transparent"
+                : "bg-transparent text-white"
             }`}
           >
             {genre}
