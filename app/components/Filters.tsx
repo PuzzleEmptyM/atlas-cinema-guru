@@ -98,7 +98,7 @@ const Filters: React.FC<FiltersProps> = ({
         <div className="flex-grow"></div>
 
         {/* Right Container: Genres */}
-        <div className="grid grid-cols-5 sm:grid-cols-2 gap-2 md:w-1/2">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 md:w-1/2">
           {[
             "Romance",
             "Horror",
