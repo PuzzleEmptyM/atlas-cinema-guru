@@ -26,7 +26,7 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="flex justify-center mt-8 space-x-4">
+    <div className="flex justify-center mt-8 space-x-1">
       <button
         onClick={handlePrevious}
         className="bg-teal-400 text-blue-900 font-bold py-2 px-8 rounded-l-full disabled:opacity-50 disabled:cursor-not-allowed"

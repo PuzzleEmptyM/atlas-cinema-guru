@@ -8,14 +8,14 @@ const FavoritesPage = () => {
   const { favorites } = useMovies();
 
   return (
-    <div className="flex flex-col min-h-screen p-8" style={{ backgroundColor: "#00003c" }}>
+    <div className="flex flex-col h-full p-8" style={{ backgroundColor: "#00003c" }}>
       {/* Header Section */}
-      <div className="w-full mb-8 text-center">
-        <h1 className="text-4xl font-bold text-white">Favorites</h1>
+      <div className="flex w-full mb-8 justify-center items-center">
+        <h1 className="text-6xl text-center font-bold text-white">Favorites</h1>
       </div>
 
       {/* Movies Section */}
-      <div className="flex-grow">
+      <div className="flex-grow w-full">
         {favorites.length > 0 ? (
           <Movies movies={favorites} />
         ) : (

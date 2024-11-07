@@ -95,31 +95,36 @@ const Filters: React.FC<FiltersProps> = ({
         </div>
 
         {/* Right Container: Genres */}
-        <div className="grid lg:grid-cols-5 grid-cols-3 sm:justify-items-center gap-2">
-          {[
-            "Romance",
-            "Horror",
-            "Drama",
-            "Action",
-            "Mystery",
-            "Fantasy",
-            "Thriller",
-            "Western",
-            "Sci-Fi",
-            "Adventure",
-          ].map((genre) => (
-            <button
-              key={genre}
-              onClick={() => handleGenreChange(genre)}
-              className={`p-2 border border-teal-400 rounded-full w-28 ${
-                selectedGenres.includes(genre)
-                  ? "bg-teal-400 rounded-full text-white"
-                  : "bg-transparent rounded-full text-white"
-              }`}
-            >
-              {genre}
-            </button>
-          ))}
+        <div className="text-white margin-4">
+          <div className="p-4">
+            Genres
+          </div>
+          <div className="grid lg:grid-cols-5 grid-cols-3 text-white sm:justify-items-center gap-2">
+            {[
+              "Romance",
+              "Horror",
+              "Drama",
+              "Action",
+              "Mystery",
+              "Fantasy",
+              "Thriller",
+              "Western",
+              "Sci-Fi",
+              "Adventure",
+            ].map((genre) => (
+              <button
+                key={genre}
+                onClick={() => handleGenreChange(genre)}
+                className={`p-2 border border-teal-400 rounded-full w-28 ${
+                  selectedGenres.includes(genre)
+                    ? "bg-teal-400 rounded-full text-white"
+                    : "bg-transparent rounded-full text-white"
+                }`}
+              >
+                {genre}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
