@@ -20,7 +20,7 @@ export default function Page() {
 
   // State for Pagination (for Home, Favorites, Watch Later)
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(10);
+  const [totalPages, setTotalPages] = useState(1);
   const [favoritesPage, setFavoritesPage] = useState(1);
   const [watchLaterPage, setWatchLaterPage] = useState(1);
 
@@ -104,7 +104,7 @@ export default function Page() {
             {currentView === "home" && (
               <Pagination
                 currentPage={currentPage}
-                totalPages={totalPages}
+                totalPages={Math.ceil(favorites.length / 6)}
                 onPageChange={(page) => setCurrentPage(page)}
               />
             )}
