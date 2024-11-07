@@ -8,12 +8,12 @@ const FavoritesPage = () => {
   const { favorites } = useMovies();
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold text-center text-white mb-8">Favorites</h1>
+    <div className="flex flex-col h-full p-8" style={{ backgroundColor: "#00003c" }}>
+      <h1 className="text-4xl font-bold text-white mb-8 text-center">Favorites</h1>
       {favorites.length > 0 ? (
         <Movies movies={favorites} />
       ) : (
-        <p className="text-white">You have no favorite movies yet.</p>
+        <p className="text-white text-center">You have no favorite movies yet.</p>
       )}
     </div>
   );
