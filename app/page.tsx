@@ -56,7 +56,7 @@ export default function Page() {
       const data = await response.json();
 
       setMovies(data.title);
-      setTotalPages(data.totalPages); // Assuming your backend returns total pages
+      setTotalPages(data.totalPages);
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
@@ -66,11 +66,11 @@ export default function Page() {
   const getMoviesToDisplay = () => {
     switch (currentView) {
       case "favorites":
-        return favorites.slice((favoritesPage - 1) * 6, favoritesPage * 6); // Assuming pagination of 6 items
+        return favorites.slice((favoritesPage - 1) * 6, favoritesPage * 6);
       case "watch-later":
-        return watchLater.slice((watchLaterPage - 1) * 6, watchLaterPage * 6); // Assuming pagination of 6 items
+        return watchLater.slice((watchLaterPage - 1) * 6, watchLaterPage * 6);
       default:
-        return movies;
+        return movies.slice((currentPage - 1) * 6, currentPage * 6);;
     }
   };
 
@@ -104,7 +104,7 @@ export default function Page() {
             {currentView === "home" && (
               <Pagination
                 currentPage={currentPage}
-                totalPages={Math.ceil(favorites.length / 6)}
+                totalPages={Math.ceil(movies.length / 6)}
                 onPageChange={(page) => setCurrentPage(page)}
               />
             )}

@@ -33,7 +33,7 @@ const Movies: React.FC<MoviesProps> = ({ movies }) => {
         return (
           <div
             key={movie.id}
-            className="relative group overflow-hidden rounded-lg shadow-lg border border-teal-400 max-w-md w-full"
+            className="relative group overflow-hidden rounded-lg shadow-lg border border-teal-400 max-w-xl w-full"
             style={{ aspectRatio: "1 / 1" }}
           >
             {/* Favorite and Watch Later Buttons (Visible on Hover) */}

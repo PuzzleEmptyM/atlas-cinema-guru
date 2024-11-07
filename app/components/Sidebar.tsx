@@ -47,7 +47,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurrentView }) => {
 
       {/* Activity Feed */}
       {isExpanded && (
-        <div className="mt-8 bg-teal-200 p-4 rounded-lg overflow-y-auto flex-grow">
+        <div className="mt-8 bg-teal-200 p-4 rounded-lg overflow-y-auto">
           <h2 className="font-bold text-gray-700 mb-2">Latest Activities</h2>
           <ul className="text-sm space-y-1 text-gray-700">
             {activities.map((activity) => (

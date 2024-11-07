@@ -53,7 +53,7 @@ const Filters: React.FC<FiltersProps> = ({
       {/* Container for Search and Genres */}
       <div className="flex flex-wrap justify-between items-start gap-4">
         {/* Left Container: Search Bar and Year Inputs */}
-        <div className="flex flex-col gap-4 max-w-lg w-full">
+        <div className="flex flex-col gap-4 max-w-lg">
           {/* Search Bar */}
           <div>
             <label htmlFor="search" className="text-white block mb-1">Search Movies</label>
@@ -94,11 +94,8 @@ const Filters: React.FC<FiltersProps> = ({
           </div>
         </div>
 
-        {/* Spacer Div for Better Alignment */}
-        <div className="flex-grow"></div>
-
         {/* Right Container: Genres */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 md:w-1/2">
+        <div className="grid lg:grid-cols-5 grid-cols-3 sm:justify-items-center gap-2">
           {[
             "Romance",
             "Horror",

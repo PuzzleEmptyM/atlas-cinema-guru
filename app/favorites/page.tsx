@@ -19,7 +19,7 @@ const FavoritesPage = () => {
         {favorites.length > 0 ? (
           <Movies movies={favorites} />
         ) : (
-          <p className="text-white text-center">You have no favorite movies yet.</p>
+          <p className="text-white text-center p-6">You have no favorite movies yet.</p>
         )}
       </div>
     </div>
