@@ -11,6 +11,7 @@
     "@vercel/postgres": "0.10.0",
     "@vercel/postgres-kysely": "^0.10.0",
     "autoprefixer": "10.4.20",
+    "axios": "^1.7.7",
     "bcryptjs": "2.4.3",
     "clsx": "2.1.1",
     "kysely": "^0.27.4",
