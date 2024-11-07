@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar";
 import Filters from "./components/Filters";
 import Movies from "./components/Movies";
 import { useMovies } from "@/app/context/MoviesContext";
+import Pagination from "./components/Pagination";
 
 export default function Page() {
   // State for Filters
@@ -17,6 +18,10 @@ export default function Page() {
   // State for Movies
   const [movies, setMovies] = useState([]);
 
+  // State for Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
   // State for Current View
   const [currentView, setCurrentView] = useState<"home" | "favorites" | "watch-later">("home");
 
@@ -26,15 +31,15 @@ export default function Page() {
   // Fetch movies when in the home view and filters change
   useEffect(() => {
     if (currentView === "home") {
-      fetchMovies();
+      fetchMovies(currentPage);
     }
-  }, [searchQuery, minYear, maxYear, selectedGenres]);
+  }, [searchQuery, minYear, maxYear, selectedGenres, currentPage]);
 
   const fetchMovies = async (page = 1) => {
     console.log("Fetching movies...");
     try {
       const queryParams = new URLSearchParams();
-  
+
       queryParams.append("page", page.toString());
       if (searchQuery) {
         queryParams.append("query", searchQuery);
@@ -44,11 +49,12 @@ export default function Page() {
       if (selectedGenres.length > 0) {
         queryParams.append("genres", selectedGenres.join(","));
       }
-  
+
       const response = await fetch(`/api/titles?${queryParams.toString()}`);
       const data = await response.json();
-  
+
       setMovies(data.title);
+      setTotalPages(data.totalPages); // Assuming your backend returns total pages
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
@@ -91,6 +97,15 @@ export default function Page() {
               onFavoriteToggle={toggleFavorite}
               onWatchLaterToggle={toggleWatchLater}
             />
+
+            {/* Pagination Component */}
+            {currentView === "home" && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
+            )}
           </div>
         </div>
       </div>
