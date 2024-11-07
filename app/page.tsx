@@ -67,12 +67,12 @@ export default function Page() {
   };
 
   return (
-    <div className="flex h-screen" style={{ backgroundColor: "#00003c" }}>
+    <div className="flex h-screen overflow-hidden" style={{ backgroundColor: "#00003c" }}>
       <div className="flex-1 flex flex-col">
         <Header />
-        <div className="flex flex-grow">
+        <div className="flex flex-grow overflow-hidden">
           <Sidebar setCurrentView={setCurrentView} />
-          <div className="flex-grow p-8">
+          <div className="flex-grow p-8 overflow-auto">
             {currentView === "home" && (
               <Filters
                 searchQuery={searchQuery}

@@ -60,7 +60,7 @@ const Filters: React.FC<FiltersProps> = ({
             placeholder="Search Movies..."
             value={searchQuery}
             onChange={handleSearchChange}
-            className="p-2 border border-teal-400 bg-blue-800 rounded-lg w-full"
+            className="p-2 border border-teal-400 bg-blue-800 rounded-full w-full"
           />
           {/* Year Inputs */}
           <div className="flex gap-4">
@@ -69,14 +69,14 @@ const Filters: React.FC<FiltersProps> = ({
               placeholder="Min Year"
               value={minYear}
               onChange={(e) => handleYearChange(e, "min")}
-              className="p-2 border border-teal-400 bg-blue-800 rounded-lg w-full"
+              className="p-2 border border-teal-400 bg-blue-800 rounded-full w-full"
             />
             <input
               type="number"
               placeholder="Max Year"
               value={maxYear}
               onChange={(e) => handleYearChange(e, "max")}
-              className="p-2 border border-teal-400 bg-blue-800 rounded-lg w-full"
+              className="p-2 border border-teal-400 bg-blue-800 rounded-full w-full"
             />
           </div>
         </div>
@@ -101,10 +101,10 @@ const Filters: React.FC<FiltersProps> = ({
             <button
               key={genre}
               onClick={() => handleGenreChange(genre)}
-              className={`p-2 border border-teal-400 rounded-lg w-28 ${
+              className={`p-2 border border-teal-400 rounded-full w-28 ${
                 selectedGenres.includes(genre)
-                  ? "bg-teal-400 rounded-lg text-white"
-                  : "bg-transparent rounded-lg text-white"
+                  ? "bg-teal-400 rounded-full text-white"
+                  : "bg-transparent rounded-full text-white"
               }`}
             >
               {genre}
