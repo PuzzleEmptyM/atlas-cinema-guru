@@ -109,7 +109,7 @@ export default function Page() {
             {currentView === "home" && (
               <Pagination
                 currentPage={currentPage}
-                totalPages={totalPages}
+                totalPages={Math.ceil(movies.length / 6)}
                 onPageChange={(page) => setCurrentPage(page)}
               />
             )}
