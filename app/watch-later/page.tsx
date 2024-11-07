@@ -9,7 +9,7 @@ const WatchLaterPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold text-white mb-4">Watch Later List</h1>
+      <h1 className="text-4xl font-bold text-center text-white mb-8">Watch Later</h1>
       {watchLater.length > 0 ? (
         <Movies movies={watchLater} />
       ) : (

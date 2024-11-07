@@ -55,29 +55,42 @@ const Filters: React.FC<FiltersProps> = ({
         {/* Left Container: Search Bar and Year Inputs */}
         <div className="flex flex-col gap-4 max-w-lg w-full">
           {/* Search Bar */}
-          <input
-            type="text"
-            placeholder="Search Movies..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className="p-2 border border-teal-400 bg-blue-800 rounded-full w-full"
-          />
+          <div>
+            <label htmlFor="search" className="text-white block mb-1">Search Movies</label>
+            <input
+              id="search"
+              type="text"
+              placeholder="Search Movies..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="p-2 border border-teal-400 bg-blue-800 rounded-full w-full"
+            />
+          </div>
+
           {/* Year Inputs */}
           <div className="flex gap-4">
-            <input
-              type="number"
-              placeholder="Min Year"
-              value={minYear}
-              onChange={(e) => handleYearChange(e, "min")}
-              className="p-2 border border-teal-400 bg-blue-800 rounded-full w-full"
-            />
-            <input
-              type="number"
-              placeholder="Max Year"
-              value={maxYear}
-              onChange={(e) => handleYearChange(e, "max")}
-              className="p-2 border border-teal-400 bg-blue-800 rounded-full w-full"
-            />
+            <div>
+              <label htmlFor="minYear" className="text-white block mb-1">Min Year</label>
+              <input
+                id="minYear"
+                type="number"
+                placeholder="Min Year"
+                value={minYear}
+                onChange={(e) => handleYearChange(e, "min")}
+                className="p-2 border border-teal-400 bg-blue-800 rounded-full w-full"
+              />
+            </div>
+            <div>
+              <label htmlFor="maxYear" className="text-white block mb-1">Max Year</label>
+              <input
+                id="maxYear"
+                type="number"
+                placeholder="Max Year"
+                value={maxYear}
+                onChange={(e) => handleYearChange(e, "max")}
+                className="p-2 border border-teal-400 bg-blue-800 rounded-full w-full"
+              />
+            </div>
           </div>
         </div>
 
