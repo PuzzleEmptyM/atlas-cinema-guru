@@ -79,7 +79,12 @@ export default function Page() {
       <div className="flex-1 flex flex-col">
         <Header />
         <div className="flex flex-grow overflow-hidden">
-          <Sidebar setCurrentView={setCurrentView} />
+          <Sidebar setCurrentView={(view) => {
+            setCurrentPage(1);
+            setFavoritesPage(1);
+            setWatchLaterPage(1);
+            setCurrentView(view);
+          }} />
           <div className="flex-grow p-8 overflow-auto">
             {currentView === "home" && (
               <Filters
@@ -104,7 +109,7 @@ export default function Page() {
             {currentView === "home" && (
               <Pagination
                 currentPage={currentPage}
-                totalPages={Math.ceil(movies.length / 6)}
+                totalPages={totalPages}
                 onPageChange={(page) => setCurrentPage(page)}
               />
             )}
