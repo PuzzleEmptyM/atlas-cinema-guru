@@ -21,7 +21,7 @@ export default function Page() {
   const [currentView, setCurrentView] = useState<"home" | "favorites" | "watch-later">("home");
 
   // Get context data for favorites and watch-later
-  const { favorites, watchLater } = useMovies();
+  const { favorites, watchLater, toggleFavorite, toggleWatchLater } = useMovies();
 
   // Fetch movies when in the home view and filters change
   useEffect(() => {
@@ -30,31 +30,25 @@ export default function Page() {
     }
   }, [searchQuery, minYear, maxYear, selectedGenres]);
 
-  const fetchMovies = async () => {
+  const fetchMovies = async (page = 1) => {
     console.log("Fetching movies...");
     try {
-      const response = await fetch(`/api/titles`);
-      const data = await response.json();
-
-      let filteredMovies = data.title;
-
-      // Apply Filters
+      const queryParams = new URLSearchParams();
+  
+      queryParams.append("page", page.toString());
       if (searchQuery) {
-        filteredMovies = filteredMovies.filter((movie: any) =>
-          movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        queryParams.append("query", searchQuery);
       }
+      queryParams.append("minYear", minYear.toString());
+      queryParams.append("maxYear", maxYear.toString());
       if (selectedGenres.length > 0) {
-        filteredMovies = filteredMovies.filter((movie: any) =>
-          selectedGenres.includes(movie.genre)
-        );
+        queryParams.append("genres", selectedGenres.join(","));
       }
-      filteredMovies = filteredMovies.filter(
-        (movie: any) =>
-          movie.released >= minYear && movie.released <= maxYear
-      );
-
-      setMovies(filteredMovies);
+  
+      const response = await fetch(`/api/titles?${queryParams.toString()}`);
+      const data = await response.json();
+  
+      setMovies(data.title);
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
@@ -94,8 +88,8 @@ export default function Page() {
             {/* Movies Component */}
             <Movies
               movies={getMoviesToDisplay()}
-              onFavoriteToggle={() => {}}
-              onWatchLaterToggle={() => {}}
+              onFavoriteToggle={toggleFavorite}
+              onWatchLaterToggle={toggleWatchLater}
             />
           </div>
         </div>

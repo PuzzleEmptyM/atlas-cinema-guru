@@ -17,8 +17,8 @@ type Movie = {
 
 type MoviesProps = {
   movies: Movie[];
-  onFavoriteToggle?: (id: string) => void;
-  onWatchLaterToggle?: (id: string) => void;
+  onFavoriteToggle?: (id: Movie) => void;
+  onWatchLaterToggle?: (id: Movie) => void;
 };
 
 const Movies: React.FC<MoviesProps> = ({ movies }) => {
