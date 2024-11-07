@@ -16,7 +16,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurrentView }) => {
     <aside
       className={`bg-teal-400 transition-all duration-300 ${
         isExpanded ? "w-64" : "w-16"
-      } h-screen p-4 flex flex-col`}
+      } h-full p-4 flex flex-col justify-between`}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
     >
@@ -47,7 +47,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurrentView }) => {
 
       {/* Activity Feed */}
       {isExpanded && (
-        <div className="mt-8 bg-teal-200 p-4 rounded-lg h-48 overflow-y-auto">
+        <div className="mt-8 bg-teal-200 p-4 rounded-lg overflow-y-auto flex-grow">
           <h2 className="font-bold text-gray-700 mb-2">Latest Activities</h2>
           <ul className="text-sm space-y-1 text-gray-700">
             {activities.map((activity) => (
@@ -58,10 +58,8 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurrentView }) => {
                 <span>
                   {activity.type === "favorited" && "Favorited"}
                   {activity.type === "unfavorited" && "Unfavorited"}
-                  {activity.type === "watch-later-added" &&
-                    "Added to Watch Later"}
-                  {activity.type === "watch-later-removed" &&
-                    "Removed from Watch Later"}
+                  {activity.type === "watch-later-added" && "Added to Watch Later"}
+                  {activity.type === "watch-later-removed" && "Removed from Watch Later"}
                 </span>
                 <span className="text-xs text-gray-500">
                   {new Date(activity.timestamp).toLocaleString()}
