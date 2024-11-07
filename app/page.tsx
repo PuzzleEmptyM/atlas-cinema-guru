@@ -18,9 +18,11 @@ export default function Page() {
   // State for Movies
   const [movies, setMovies] = useState([]);
 
-  // State for Pagination
+  // State for Pagination (for Home, Favorites, Watch Later)
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [favoritesPage, setFavoritesPage] = useState(1);
+  const [watchLaterPage, setWatchLaterPage] = useState(1);
 
   // State for Current View
   const [currentView, setCurrentView] = useState<"home" | "favorites" | "watch-later">("home");
@@ -64,9 +66,9 @@ export default function Page() {
   const getMoviesToDisplay = () => {
     switch (currentView) {
       case "favorites":
-        return favorites;
+        return favorites.slice((favoritesPage - 1) * 6, favoritesPage * 6); // Assuming pagination of 6 items
       case "watch-later":
-        return watchLater;
+        return watchLater.slice((watchLaterPage - 1) * 6, watchLaterPage * 6); // Assuming pagination of 6 items
       default:
         return movies;
     }
@@ -104,6 +106,22 @@ export default function Page() {
                 currentPage={currentPage}
                 totalPages={totalPages}
                 onPageChange={(page) => setCurrentPage(page)}
+              />
+            )}
+
+            {currentView === "favorites" && (
+              <Pagination
+                currentPage={favoritesPage}
+                totalPages={Math.ceil(favorites.length / 6)}
+                onPageChange={(page) => setFavoritesPage(page)}
+              />
+            )}
+
+            {currentView === "watch-later" && (
+              <Pagination
+                currentPage={watchLaterPage}
+                totalPages={Math.ceil(watchLater.length / 6)}
+                onPageChange={(page) => setWatchLaterPage(page)}
               />
             )}
           </div>
